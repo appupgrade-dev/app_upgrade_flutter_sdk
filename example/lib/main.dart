@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:app_upgrade_flutter_sdk/app_upgrade.dart';
+import 'package:app_upgrade_flutter_sdk/app_upgrade_flutter_sdk.dart';
 
 class MyHttpOverrides extends HttpOverrides{
   @override
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // This is Optional.
     DialogConfig dialogConfig = DialogConfig(
-        dialogStyle: DialogStyle.cupertino,
+        dialogStyle: DialogStyle.material,
         title: 'App update required!',
         updateButtonTitle: 'Update Now',
         laterButtonTitle: 'Later'
