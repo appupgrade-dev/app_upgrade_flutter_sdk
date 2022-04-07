@@ -116,7 +116,8 @@ class MyApp extends StatelessWidget {
 ![image](screenshots/cupertino.png)
 
 ## Force upgrade screenshot Example
-- Only update button is enable. User cannot skip it.
+Only update button is enable. User cannot skip it.
+
 ![image](screenshots/forceupgrade.png)
 
 ### Debugging
