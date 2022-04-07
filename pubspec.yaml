@@ -1,7 +1,6 @@
 name: app_upgrade_flutter_sdk
 description: Flutter SDK for App Upgrade.
 version: 1.0.0
-author: App Upgrade<appgrade.dev@gmail.com>
 homepage: https://github.com/appupgrade-dev/app_upgrade_flutter_sdk
 
 environment:

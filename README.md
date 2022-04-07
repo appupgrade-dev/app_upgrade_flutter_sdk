@@ -120,16 +120,16 @@ class MyApp extends StatelessWidget {
 
 ## Screenshot of alert - material
 
-![image](screenshots/material.png)
+![image](https://raw.githubusercontent.com/appupgrade-dev/app_upgrade_flutter_sdk/main/screenshots/material.png)
 
 ## Screenshot of Cupertino alert
 
-![image](screenshots/cupertino.png)
+![image](https://raw.githubusercontent.com/appupgrade-dev/app_upgrade_flutter_sdk/main/screenshots/cupertino.png)
 
 ## Force upgrade screenshot Example
 Only update button is enable. User cannot skip it.
 
-![image](screenshots/forceupgrade.png)
+![image](https://raw.githubusercontent.com/appupgrade-dev/app_upgrade_flutter_sdk/main/screenshots/forceupgrade.png)
 
 ### Debugging
 You can provide debug true to enable debug logs
