@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: AppUpgradeAlert(
-        xApiKey: 'MmQwMDU3YWEtNmEzOC00NjQ4LThlYWItNWQ4YTI3YzZjNDg5',
+        xApiKey: 'MDNmNmZkNDEtNmNkMi00NzY3LThjOWEtYWYxMGFjZWQ0ZjI2',
         appInfo: appInfo,
         dialogConfig: dialogConfig,
         debug: true,
