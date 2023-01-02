@@ -120,16 +120,16 @@ class MyApp extends StatelessWidget {
 
 ## Screenshot of alert - material
 
-![image](https://raw.githubusercontent.com/appupgrade-dev/app_upgrade_flutter_sdk/main/screenshots/material.png)
+![image](https://raw.githubusercontent.com/appupgrade-dev/app-upgrade-assets/main/images/forceupgrade_flutter_material.png)
 
 ## Screenshot of Cupertino alert
 
-![image](https://raw.githubusercontent.com/appupgrade-dev/app_upgrade_flutter_sdk/main/screenshots/cupertino.png)
+![image](https://raw.githubusercontent.com/appupgrade-dev/app-upgrade-assets/main/images/forceupgrade_flutter_cupertino.png)
 
 ## Force upgrade screenshot Example
 Only update button is enable. User cannot skip it.
 
-![image](https://raw.githubusercontent.com/appupgrade-dev/app_upgrade_flutter_sdk/main/screenshots/forceupgrade.png)
+![image](https://raw.githubusercontent.com/appupgrade-dev/app-upgrade-assets/main/images/forceupgrade_flutter_.png)
 
 ### Debugging
 You can provide debug true to enable debug logs
@@ -186,5 +186,10 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE OF CONDUCT](CODE_OF_CONDUCT
 ### License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
+
+## Need help?
+
+If you're looking for help, try our [Documentation](https://appupgrade.dev/docs/) or our [FAQ](https://appupgrade.dev/docs/app-upgrade-faq).
+If you need support please write to us at appupgrade.dev@gmail.com
 
 ### Happy Coding!!!
