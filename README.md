@@ -46,10 +46,10 @@ class MyApp extends StatelessWidget {
     );
     
     return MaterialApp(
-      title: 'Upgrader Example',
+      title: 'App Upgrade Flutter Example',
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Upgrader Example'),
+            title: Text('App Upgrade Flutter Example'),
           ),
           body: AppUpgradeAlert(
             xApiKey: 'MmQwMDU3YWEtNmEzOC00NjQ4LThlYWItNWQ4YTI3YzZdfjdkfdkfdg5', // Your x-api-key
@@ -101,10 +101,10 @@ class MyApp extends StatelessWidget {
     );
     
     return MaterialApp(
-      title: 'Upgrader Example',
+      title: 'App Upgrade Flutter Example',
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Upgrader Example'),
+            title: Text('App Upgrade Flutter Example'),
           ),
           body: AppUpgradeAlert(
             xApiKey: 'MmQwMDU3YWEtNmEzOC00NjQ4LThlYWItNWQ4YTI3YzZdfjdkfdkfdg5',
@@ -155,10 +155,10 @@ class MyApp extends StatelessWidget {
     );
     
     return MaterialApp(
-      title: 'Upgrader Example',
+      title: 'App Upgrade Flutter Example',
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Upgrader Example'),
+            title: Text('App Upgrade Flutter Example'),
           ),
           body: AppUpgradeAlert(
             xApiKey: 'MmQwMDU3YWEtNmEzOC00NjQ4LThlYWItNWQ4YTI3YzZdfjdkfdkfdg5', // Your x-api-key
