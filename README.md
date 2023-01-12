@@ -118,6 +118,12 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+### Note:
+1. For opening the app store/playstore the app should be live.
+2. It might not be able to open the app store/playstore in simulator. You can try it in physical device.
+3. You can find a sample app from here [app_upgrade_flutter_demo_app](https://github.com/appupgrade-dev/app_upgrade_flutter_demo_app)
+4. Read detailed blog on how to integrate from here [How to upgrade/force upgrade Flutter app](https://appupgrade.dev/blog/how-to-force-upgrade-flutter-app)
+
 ## Screenshot of alert - material
 
 ![image](https://raw.githubusercontent.com/appupgrade-dev/app-upgrade-assets/main/images/forceupgrade_flutter_material.png)
