@@ -16,10 +16,11 @@ class AppUpgradeApi {
       var appVersion = params.appVersion;
       var platform = params.platform;
       var environment = params.environment;
+      var appLanguage = params.appLanguage;
       
       final response = await client!.get(
         Uri.parse(
-            '$appUpgradeBaseURL/api/v1/versions/check?app_name=$appName&app_version=$appVersion&platform=$platform&environment=$environment'),
+            '$appUpgradeBaseURL/api/v1/versions/check?app_name=$appName&app_version=$appVersion&platform=$platform&environment=$environment&app_language=$appLanguage'),
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           "x-api-key": xApiKey,

@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
       appVersion: '1.0.0', // Your app version
       platform: 'android', // App Platform, android or ios
       environment: 'production', // Environment in which app is running, production, staging or development etc.
+      appLanguage: 'en' // App language ex: en, es etc. Optional.
     );
     
     return MaterialApp(
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
             title: Text('App Upgrade Flutter Example'),
           ),
           body: AppUpgradeAlert(
-            xApiKey: 'MmQwMDU3YWEtNmEzOC00NjQ4LThlYWItNWQ4YTI3YzZdfjdkfdkfdg5', // Your x-api-key
+            xApiKey: 'ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5', // Your x-api-key
             appInfo: appInfo,
             child: Center(child: Text('Hello World!')),
           )
@@ -91,6 +92,7 @@ class MyApp extends StatelessWidget {
       appVersion: '1.0.0',
       platform: 'android',
       environment: 'production',
+      appLanguage: 'en' // App language ex: en, es etc. Optional.
     );
     
     DialogConfig dialogConfig = DialogConfig(
@@ -158,6 +160,7 @@ class MyApp extends StatelessWidget {
       appVersion: '1.0.0', // Your app version
       platform: 'android', // App Platform, android or ios
       environment: 'production', // Environment in which app is running, production, staging or development etc.
+      appLanguage: 'en' // App language ex: en, es etc. Optional.
     );
     
     return MaterialApp(

@@ -58,6 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appVersion: '1.0.0',
       platform: 'android',
       environment: 'production',
+      appLanguage: 'es'
     );
 
     // This is Optional.
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: AppUpgradeAlert(
-        xApiKey: 'MDNmNmZkNDEtNmNkMi00NzY3LThjOWEtYWYxMGFjZWQ0ZjI2',
+        xApiKey: 'ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5',
         appInfo: appInfo,
         dialogConfig: dialogConfig,
         debug: true,
