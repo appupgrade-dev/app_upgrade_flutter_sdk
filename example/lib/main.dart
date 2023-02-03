@@ -3,11 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:app_upgrade_flutter_sdk/app_upgrade_flutter_sdk.dart';
 
-class MyHttpOverrides extends HttpOverrides{
+class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext? context){
+  HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
@@ -52,22 +53,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     AppInfo appInfo = AppInfo(
-      appName: 'Wallpaper app',
-      appVersion: '1.0.0',
-      platform: 'android',
-      environment: 'production',
-      appLanguage: 'es'
-    );
+        appName: 'Wallpaper app',
+        appVersion: '1.0.0',
+        platform: 'android',
+        environment: 'production',
+        appLanguage: 'es');
 
     // This is Optional.
     DialogConfig dialogConfig = DialogConfig(
-        dialogStyle: DialogStyle.material,
-        title: 'App update required!',
-        updateButtonTitle: 'Update Now',
-        laterButtonTitle: 'Later'
-    );
+        dialogStyle: DialogStyle.material, //Optional
+        title: 'App update required!', //Optional
+        updateButtonTitle: 'Update Now', //Optional
+        laterButtonTitle: 'Later', //Optional
+        onUpdateCallback: () {
+          print('Update Callback');
+        }, //Optional
+        onLaterCallback: () {
+          print('Later Callback');
+        } //Optional
+        );
 
     return Scaffold(
       appBar: AppBar(

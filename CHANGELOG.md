@@ -2,6 +2,9 @@
 
 All notable changes will be documented in this file.
 
+## [1.0.4] - 2023-01-16
+* Add support for update message localization.
+
 ## [1.0.3] - 2023-01-02
 * Add telemetry data.
 

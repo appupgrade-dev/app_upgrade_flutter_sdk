@@ -1,26 +1,28 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:http/retry.dart';
 import './models/version-check.dart';
 
 class AppUpgradeApi {
   /// App Upgrade API URL
-  final String appUpgradeBaseURL = 'https://appupgrade.dev';
+  final String appUpgradeBaseURL = 'appupgrade.dev';
 
-  http.Client? client = http.Client();
+  final http.Client? client = RetryClient(http.Client());
 
   bool debug = false;
 
   Future<VersionCheck?> versionCheck(xApiKey, params) async {
     try {
-      var appName = params.appName;
-      var appVersion = params.appVersion;
-      var platform = params.platform;
-      var environment = params.environment;
-      var appLanguage = params.appLanguage;
+      final queryParameters = {
+        'app_name': params.appName,
+        'app_version': params.appVersion,
+        'platform': params.platform,
+        'environment': params.environment,
+        'app_language': params.appLanguage
+      };
       
       final response = await client!.get(
-        Uri.parse(
-            '$appUpgradeBaseURL/api/v1/versions/check?app_name=$appName&app_version=$appVersion&platform=$platform&environment=$environment&app_language=$appLanguage'),
+        Uri.https(appUpgradeBaseURL, '/api/v1/versions/check', queryParameters),
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           "x-api-key": xApiKey,

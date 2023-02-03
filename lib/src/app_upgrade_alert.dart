@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app_info.dart';
 import 'app_upgrade_base.dart';
-import 'app_upgrader.dart';
+import 'app_upgrade.dart';
 import 'dialog_config.dart';
 
 class AppUpgradeAlert extends AppUpgradeBase {
@@ -30,7 +30,7 @@ class AppUpgradeAlert extends AppUpgradeBase {
           if (processed.connectionState == ConnectionState.done &&
               processed.data != null &&
               processed.data!) {
-            AppUpgrader().checkVersion(context: context);
+            AppUpgrade().checkVersion(context: context);
           }
           return child!;
         });

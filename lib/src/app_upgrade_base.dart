@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'app_upgrader.dart';
+import 'app_upgrade.dart';
 import 'app_info.dart';
 import 'dialog_config.dart';
 
 class AppUpgradeBase extends StatefulWidget {
-  final http.Client? client;
   final String xApiKey;
   final AppInfo appInfo;
   final DialogConfig? dialogConfig;
@@ -13,25 +12,20 @@ class AppUpgradeBase extends StatefulWidget {
 
   AppUpgradeBase({
     Key? key,
-    this.client,
     required this.xApiKey,
     required this.appInfo,
     this.dialogConfig,
     this.debug,
   }) : super(key: key) {
-    
-    if (client != null) {
-      AppUpgrader().client = client;
-    }
 
-    AppUpgrader().xApiKey = xApiKey;
-    AppUpgrader().appInfo = appInfo;
+    AppUpgrade().xApiKey = xApiKey;
+    AppUpgrade().appInfo = appInfo;
     if (dialogConfig != null) {
-      AppUpgrader().dialogConfig = dialogConfig!;
+      AppUpgrade().dialogConfig = dialogConfig!;
     }
 
     if (debug != null) {
-      AppUpgrader().debug = debug!;
+      AppUpgrade().debug = debug!;
     }
   }
 
@@ -44,7 +38,7 @@ class AppUpgradeBase extends StatefulWidget {
 }
 
 class AppUpgradeBaseState extends State<AppUpgradeBase> {
-  final _initialized = AppUpgrader().initialize();
+  final _initialized = AppUpgrade().initialize();
 
   Future<bool> get initialized => _initialized;
 

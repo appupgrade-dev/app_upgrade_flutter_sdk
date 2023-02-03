@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:store_redirect/store_redirect.dart';
 import 'app_info.dart';
 import 'app_upgrade_api.dart';
@@ -9,30 +8,28 @@ import 'dialog_config.dart';
 
 typedef BoolCallback = bool Function();
 
-class AppUpgrader {
-  static AppUpgrader _singleton = AppUpgrader._internal();
+class AppUpgrade {
+  static AppUpgrade _singleton = AppUpgrade._internal();
 
   bool _initCalled = false;
-  http.Client? client = http.Client();
 
   // Required
   String xApiKey = '';
   late AppInfo appInfo;
-  // User Customization
-  DialogConfig dialogConfig = DialogConfig(
-      dialogStyle: DialogStyle.material,
-      title: 'Please Update',
-      updateButtonTitle: 'Update',
-      laterButtonTitle: 'Later',
-  );
+  DialogConfig dialogConfig = DialogConfig();
+
+  // Defaults
+  String defaultDialogTitle = 'Please update';
+  String defaultUpdateButtonTitle = 'Update Now';
+  String defaultLaterButtonTitle = 'Later';
 
   bool debug = false;
 
-  factory AppUpgrader() {
+  factory AppUpgrade() {
     return _singleton;
   }
 
-  AppUpgrader._internal();
+  AppUpgrade._internal();
 
   Future<bool> initialize() async {
     if (_initCalled) {
@@ -70,7 +67,7 @@ class AppUpgrader {
         Future.delayed(const Duration(milliseconds: 0), () {
           _showDialog(
             context: context,
-            title: dialogConfig.title!,
+            title: dialogConfig.title ?? defaultDialogTitle,
             message: version.message,
             canDismissDialog: false,
           );
@@ -84,7 +81,7 @@ class AppUpgrader {
         Future.delayed(const Duration(milliseconds: 0), () {
           _showDialog(
             context: context,
-            title: dialogConfig.title!,
+            title: dialogConfig.title ?? defaultDialogTitle,
             message: version.message,
             canDismissDialog: true,
           );
@@ -143,10 +140,11 @@ class AppUpgrader {
       actions: <Widget>[
         if (canDismissDialog == true)
           TextButton(
-              child: Text(dialogConfig.laterButtonTitle!),
+              child: Text(dialogConfig.laterButtonTitle ?? defaultLaterButtonTitle),
               onPressed: () => onUserLater(context)),
         TextButton(
-            child: Text(dialogConfig.updateButtonTitle!),
+            child: Text(
+                dialogConfig.updateButtonTitle ?? defaultUpdateButtonTitle),
             onPressed: () => onUserUpdate(context)),
       ],
     );
@@ -166,11 +164,13 @@ class AppUpgrader {
       actions: <Widget>[
         if (canDismissDialog == true)
           CupertinoDialogAction(
-              child: Text(dialogConfig.laterButtonTitle!),
+              child: Text(
+                  dialogConfig.laterButtonTitle ?? defaultLaterButtonTitle),
               onPressed: () => onUserLater(context)),
         CupertinoDialogAction(
             isDefaultAction: true,
-            child: Text(dialogConfig.updateButtonTitle!),
+            child: Text(
+                dialogConfig.updateButtonTitle ?? defaultUpdateButtonTitle),
             onPressed: () => onUserUpdate(context))
       ],
     );
@@ -181,6 +181,9 @@ class AppUpgrader {
       print('App Upgrade: Later button');
     }
 
+    if (dialogConfig.onLaterCallback != null) {
+      dialogConfig.onLaterCallback!();
+    }
     _pop(context);
   }
 
@@ -190,7 +193,10 @@ class AppUpgrader {
     }
 
     try {
-        StoreRedirect.redirect();
+      if (dialogConfig.onUpdateCallback != null) {
+        dialogConfig.onUpdateCallback!();
+      }
+      StoreRedirect.redirect();
     } catch (e) {
       if (debug) {
         print('App Upgrade: launch to app store failed: $e');
