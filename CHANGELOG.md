@@ -2,6 +2,9 @@
 
 All notable changes will be documented in this file.
 
+## [1.0.5] - 2023-02-04
+* Add request retries and url encoding for params.
+
 ## [1.0.4] - 2023-01-16
 * Add support for update message localization.
 
