@@ -70,6 +70,8 @@ Optionally you can also provide dialog cofiguration such as dialogStyle (materia
   title: 'App update required!', // Title that will be shown in the Diaglog. Default is "App Update Required!"
   updateButtonTitle: 'Update Now', // Update button title. Default is "Update"
   laterButtonTitle: 'Later' // Later button title. Default is "Later"
+  onUpdateCallback: () {} //Optional, If the user clicks on the Update button the SDK will call the onUpdateCallback.
+  onLaterCallback: () {} //Optional, If the user clicks on the Later button the SDK will call the onLaterCallback.
 ```
 
 Example with Dialog Config:
@@ -100,6 +102,7 @@ class MyApp extends StatelessWidget {
       title: 'App update required!',
       updateButtonTitle: 'Update Now',
       laterButtonTitle: 'Later'
+      onLaterCallback: () { print("Later callback") }
     );
     
     return MaterialApp(
