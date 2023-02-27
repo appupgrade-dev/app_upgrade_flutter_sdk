@@ -151,7 +151,7 @@ class MyApp extends StatelessWidget {
       platform: 'android', // App Platform, android or ios
       environment: 'production', // Environment in which app is running, production, staging or development etc.
       appLanguage: 'en' // App language ex: en, es etc. Optional.
-      preferredAndroidMarket: PrefferedAndroidMarket.Amazon // or PrefferedAndroidMarket.Huawei or PrefferedAndroidMarket.Other If not provided default is Google playstore. Optional
+      preferredAndroidMarket: PreferredAndroidMarket.Amazon // or PreferredAndroidMarket.Huawei or PreferredAndroidMarket.Other If not provided default is Google playstore. Optional
     );
     
     return MaterialApp(
@@ -192,7 +192,7 @@ class MyApp extends StatelessWidget {
       platform: 'android', // App Platform, android or ios
       environment: 'production', // Environment in which app is running, production, staging or development etc.
       appLanguage: 'en' // App language ex: en, es etc. Optional.
-      preferredAndroidMarket: PrefferedAndroidMarket.Amazon // or PrefferedAndroidMarket.Huawei or PrefferedAndroidMarket.Other If not provided default is Google playstore. Optional
+      preferredAndroidMarket: PreferredAndroidMarket.Amazon // or PreferredAndroidMarket.Huawei or PreferredAndroidMarket.Other If not provided default is Google playstore. Optional
       otherAndroidMarketUrl: 'https://someotherandroidmarket.com/app/id'// Required if preferredAndroidMarket is Other.
     );
     

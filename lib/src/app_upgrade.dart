@@ -205,7 +205,7 @@ class AppUpgrade {
 
       String url = '';
       PackageInfo packageInfo = await PackageInfo.fromPlatform();
-      String appId = 'com.snapdeal.main';
+      String appId = packageInfo.packageName;
 
       if (Platform.isAndroid) {
         if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.Google) {
