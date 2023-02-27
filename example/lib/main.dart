@@ -58,7 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
         appVersion: '1.0.0',
         platform: 'android',
         environment: 'production',
-        appLanguage: 'es');
+        appLanguage: 'es',
+        // preferredAndroidMarket: PreferredAndroidMarket.Huawei, // or PrefferedAndroidMarket.Huawei or PrefferedAndroidMarket.Other If not provided default android marketplace is Google playstore. Optional
+        // otherAndroidMarketUrl: 'https://otherandroidmarketplaceurl.com/app/id', // Required only if PreferredAndroidMarket is Other.
+    );
 
     // This is Optional.
     DialogConfig dialogConfig = DialogConfig(

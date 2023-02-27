@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:store_redirect/store_redirect.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'app_info.dart';
 import 'app_upgrade_api.dart';
 import 'dialog_config.dart';
+import 'dart:io' show Platform;
+import 'preferred_android_market.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 typedef BoolCallback = bool Function();
 
@@ -70,6 +73,7 @@ class AppUpgrade {
             title: dialogConfig.title ?? defaultDialogTitle,
             message: version.message,
             canDismissDialog: false,
+            appInfo: appInfo
           );
         });
       } else {
@@ -84,6 +88,7 @@ class AppUpgrade {
             title: dialogConfig.title ?? defaultDialogTitle,
             message: version.message,
             canDismissDialog: true,
+            appInfo: appInfo
           );
         });
       }
@@ -100,7 +105,8 @@ class AppUpgrade {
       {required BuildContext context,
       required String title,
       required String message,
-      required bool canDismissDialog}) {
+      required bool canDismissDialog,
+      required AppInfo appInfo}) {
     if (debug) {
       print('App Upgrade: Showing Dialog, title: $title');
       print('App Upgrade: Showing Dialog, message: $message');
@@ -113,9 +119,9 @@ class AppUpgrade {
         return WillPopScope(
           onWillPop: () async => _shouldPopScope(),
           child: dialogConfig.dialogStyle == DialogStyle.material
-              ? _alertDialog(title, message, canDismissDialog, context)
+              ? _alertDialog(title, message, canDismissDialog, context, appInfo)
               : _cupertinoAlertDialog(
-                  title, message, canDismissDialog, context),
+                  title, message, canDismissDialog, context, appInfo),
         );
       },
     );
@@ -126,7 +132,7 @@ class AppUpgrade {
   }
 
   AlertDialog _alertDialog(String title, String message, bool canDismissDialog,
-      BuildContext context) {
+      BuildContext context, AppInfo appInfo) {
     return AlertDialog(
       title: Text(title),
       content: SingleChildScrollView(
@@ -145,13 +151,13 @@ class AppUpgrade {
         TextButton(
             child: Text(
                 dialogConfig.updateButtonTitle ?? defaultUpdateButtonTitle),
-            onPressed: () => onUserUpdate(context)),
+            onPressed: () => onUserUpdate(context, appInfo)),
       ],
     );
   }
 
   CupertinoAlertDialog _cupertinoAlertDialog(String title, String message,
-      bool canDismissDialog, BuildContext context) {
+      bool canDismissDialog, BuildContext context, AppInfo appInfo) {
     return CupertinoAlertDialog(
       title: Text(title),
       content: Column(
@@ -171,7 +177,7 @@ class AppUpgrade {
             isDefaultAction: true,
             child: Text(
                 dialogConfig.updateButtonTitle ?? defaultUpdateButtonTitle),
-            onPressed: () => onUserUpdate(context))
+            onPressed: () => onUserUpdate(context, appInfo))
       ],
     );
   }
@@ -187,7 +193,7 @@ class AppUpgrade {
     _pop(context);
   }
 
-  void onUserUpdate(BuildContext context) async {
+  void onUserUpdate(BuildContext context, AppInfo appInfo) async {
     if (debug) {
       print('App Upgrade: Update button');
     }
@@ -196,7 +202,31 @@ class AppUpgrade {
       if (dialogConfig.onUpdateCallback != null) {
         dialogConfig.onUpdateCallback!();
       }
-      StoreRedirect.redirect();
+
+      String url = '';
+      PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      String appId = 'com.snapdeal.main';
+
+      if (Platform.isAndroid) {
+        if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.Google) {
+          url = "https://play.google.com/store/apps/details?id=$appId";
+        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.Huawei) {
+          url = "appmarket://details?id=$appId";
+        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.Amazon) {
+          url = "https://www.amazon.com/gp/mas/dl/android?p=$appId";
+        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.Other && appInfo.otherAndroidMarketUrl != null) {
+          url = appInfo.otherAndroidMarketUrl!;
+        } else {
+          url = "https://play.google.com/store/apps/details?id=$appId";
+        }
+      } else if (Platform.isIOS) {
+          url = "https://apps.apple.com/app/id/$appId";
+      }
+      
+      launchUrl(
+        Uri.parse(url),
+        mode: LaunchMode.externalApplication,
+      );
     } catch (e) {
       if (debug) {
         print('App Upgrade: launch to app store failed: $e');
