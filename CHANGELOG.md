@@ -2,6 +2,9 @@
 
 All notable changes will be documented in this file.
 
+## [1.0.7] - 2023-02-27
+* Add support for Amazon, Huawei and other android marketplaces.
+
 ## [1.0.6] - 2023-02-04
 * Add callbacks for update and later button.
 

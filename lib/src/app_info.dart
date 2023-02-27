@@ -4,6 +4,8 @@ class AppInfo {
   final String platform;
   final String environment;
   String? appLanguage;
+  String? preferredAndroidMarket;
+  String? otherAndroidMarketUrl;
 
   AppInfo({
     required this.appName,
@@ -11,5 +13,7 @@ class AppInfo {
     required this.platform,
     required this.environment,
     this.appLanguage,
+    this.preferredAndroidMarket,
+    this.otherAndroidMarketUrl,
   });
 }
