@@ -1,6 +1,6 @@
 class PreferredAndroidMarket {
-  static const Google = 'Google';
-  static const Amazon = 'Amazon';
-  static const Huawei = 'Huawei';
-  static const Other = 'Other';
+  static const google = 'Google';
+  static const amazon = 'Amazon';
+  static const huawei = 'Huawei';
+  static const other = 'Other';
 }

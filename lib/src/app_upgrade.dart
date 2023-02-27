@@ -208,13 +208,13 @@ class AppUpgrade {
       String appId = packageInfo.packageName;
 
       if (Platform.isAndroid) {
-        if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.Google) {
+        if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.google) {
           url = "https://play.google.com/store/apps/details?id=$appId";
-        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.Huawei) {
+        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.huawei) {
           url = "appmarket://details?id=$appId";
-        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.Amazon) {
+        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.amazon) {
           url = "https://www.amazon.com/gp/mas/dl/android?p=$appId";
-        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.Other && appInfo.otherAndroidMarketUrl != null) {
+        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.other && appInfo.otherAndroidMarketUrl != null) {
           url = appInfo.otherAndroidMarketUrl!;
         } else {
           url = "https://play.google.com/store/apps/details?id=$appId";
