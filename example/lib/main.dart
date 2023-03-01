@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         platform: 'android',
         environment: 'production',
         appLanguage: 'es',
-        // preferredAndroidMarket: PreferredAndroidMarket.amazon, // or PrefferedAndroidMarket.huawei or PrefferedAndroidMarket.other If not provided default android marketplace is Google playstore. Optional
+        // preferredAndroidMarket: PreferredAndroidMarket.huawei, // or PrefferedAndroidMarket.huawei or PrefferedAndroidMarket.other If not provided default android marketplace is Google playstore. Optional
         // otherAndroidMarketUrl: 'https://otherandroidmarketplaceurl.com/app/id', // Required only if PreferredAndroidMarket is other.
     );
 

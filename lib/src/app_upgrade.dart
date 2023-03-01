@@ -69,12 +69,11 @@ class AppUpgrade {
         // show force upgrade dialog
         Future.delayed(const Duration(milliseconds: 0), () {
           _showDialog(
-            context: context,
-            title: dialogConfig.title ?? defaultDialogTitle,
-            message: version.message,
-            canDismissDialog: false,
-            appInfo: appInfo
-          );
+              context: context,
+              title: dialogConfig.title ?? defaultDialogTitle,
+              message: version.message,
+              canDismissDialog: false,
+              appInfo: appInfo);
         });
       } else {
         if (debug) {
@@ -84,12 +83,11 @@ class AppUpgrade {
         // show upgrade dialog
         Future.delayed(const Duration(milliseconds: 0), () {
           _showDialog(
-            context: context,
-            title: dialogConfig.title ?? defaultDialogTitle,
-            message: version.message,
-            canDismissDialog: true,
-            appInfo: appInfo
-          );
+              context: context,
+              title: dialogConfig.title ?? defaultDialogTitle,
+              message: version.message,
+              canDismissDialog: true,
+              appInfo: appInfo);
         });
       }
     } else {
@@ -146,7 +144,8 @@ class AppUpgrade {
       actions: <Widget>[
         if (canDismissDialog == true)
           TextButton(
-              child: Text(dialogConfig.laterButtonTitle ?? defaultLaterButtonTitle),
+              child: Text(
+                  dialogConfig.laterButtonTitle ?? defaultLaterButtonTitle),
               onPressed: () => onUserLater(context)),
         TextButton(
             child: Text(
@@ -210,23 +209,35 @@ class AppUpgrade {
       if (Platform.isAndroid) {
         if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.google) {
           url = "https://play.google.com/store/apps/details?id=$appId";
-        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.huawei) {
+        } else if (appInfo.preferredAndroidMarket ==
+            PreferredAndroidMarket.huawei) {
           url = "appmarket://details?id=$appId";
-        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.amazon) {
+        } else if (appInfo.preferredAndroidMarket ==
+            PreferredAndroidMarket.amazon) {
           url = "https://www.amazon.com/gp/mas/dl/android?p=$appId";
-        } else if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.other && appInfo.otherAndroidMarketUrl != null) {
+        } else if (appInfo.preferredAndroidMarket ==
+                PreferredAndroidMarket.other &&
+            appInfo.otherAndroidMarketUrl != null) {
           url = appInfo.otherAndroidMarketUrl!;
         } else {
           url = "https://play.google.com/store/apps/details?id=$appId";
         }
+
+        try {
+          await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+        } catch (e) {
+          if (debug) {
+            print(
+                'App Upgrade Error: Could not open the preferred android market. Defaulting to Google Playstore.');
+          }
+          await launchUrl(
+              Uri.parse('https://play.google.com/store/apps/details?id=$appId'),
+              mode: LaunchMode.externalApplication);
+        }
       } else if (Platform.isIOS) {
-          url = "https://apps.apple.com/app/id/$appId";
+        url = "https://apps.apple.com/app/id/$appId";
+        await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
       }
-      
-      launchUrl(
-        Uri.parse(url),
-        mode: LaunchMode.externalApplication,
-      );
     } catch (e) {
       if (debug) {
         print('App Upgrade: launch to app store failed: $e');

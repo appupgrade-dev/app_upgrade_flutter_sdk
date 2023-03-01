@@ -171,7 +171,13 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+- preferredAndroidMarket: PreferredAndroidMarket.amazon // or PreferredAndroidMarket.huawei or PreferredAndroidMarket.other If not provided default is Google playstore. If SDK fails to open preferred market place in case marketplace is not available then default Google playstore will be open.
+
 If you want to redirect user to some other android market place you can use the following example:
+```
+preferredAndroidMarket: PreferredAndroidMarket.other
+otherAndroidMarketUrl: 'https://someotherandroidmarket.com/app/id'// Required if preferredAndroidMarket is Other.
+```
 ```dart
 import 'package:flutter/material.dart';
 import 'package:app_upgrade_flutter_sdk/app_upgrade_flutter_sdk.dart';
