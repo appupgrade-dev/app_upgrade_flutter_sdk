@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:app_upgrade_flutter_sdk/app_upgrade_flutter_sdk.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -235,12 +236,22 @@ class AppUpgrade {
               mode: LaunchMode.externalApplication);
         }
       } else if (Platform.isIOS) {
-        url = "https://apps.apple.com/app/id/$appId";
-        await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+        if (appInfo.preferredIosStore == PreferredIosStore.other && appInfo.otherIosStoreUrl != null) {
+          url = appInfo.otherIosStoreUrl!;
+        } else {
+          url = "https://apps.apple.com/app/id/$appId";
+        }
+        try {
+          await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+        } catch (e) {
+          if (debug) {
+            print('App Upgrade: launch to store failed: $e');
+          }
+        }
       }
     } catch (e) {
       if (debug) {
-        print('App Upgrade: launch to app store failed: $e');
+        print('App Upgrade: launch to store failed: $e');
       }
     }
   }

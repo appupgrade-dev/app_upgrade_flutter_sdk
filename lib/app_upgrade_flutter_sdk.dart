@@ -6,3 +6,4 @@ export 'src/app_upgrade_alert.dart';
 export 'src/app_info.dart';
 export 'src/dialog_config.dart';
 export 'src/preferred_android_market.dart';
+export 'src/preferred_ios_store.dart';

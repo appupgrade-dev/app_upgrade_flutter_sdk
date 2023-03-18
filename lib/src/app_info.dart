@@ -6,6 +6,8 @@ class AppInfo {
   String? appLanguage;
   String? preferredAndroidMarket;
   String? otherAndroidMarketUrl;
+  String? preferredIosStore;
+  String? otherIosStoreUrl;
 
   AppInfo({
     required this.appName,
@@ -15,5 +17,7 @@ class AppInfo {
     this.appLanguage,
     this.preferredAndroidMarket,
     this.otherAndroidMarketUrl,
+    this.preferredIosStore,
+    this.otherIosStoreUrl,
   });
 }

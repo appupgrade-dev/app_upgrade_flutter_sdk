@@ -2,6 +2,9 @@
 
 All notable changes will be documented in this file.
 
+## [1.0.9] - 2023-03-18
+* Add support for other iOS stores.
+
 ## [1.0.8] - 2023-03-01
 * Add Google playstore as default fallback marketplace for android.
 

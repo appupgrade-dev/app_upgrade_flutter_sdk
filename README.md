@@ -218,6 +218,10 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+For IOS, if you want to redirect user to some other store you can use the following parameters:
+
+- preferredIosStore: PreferredIosStore.other
+- otherIosStoreUrl: "https://otheriosstoreurl.com/app/id"// Required if preferredAndroidMarket is Other.
 
 ### Note:
 1. For opening the app store/playstore the app should be live.
@@ -280,7 +284,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-## App Upgrade Docs
+## App Upgrade
 For more information visit [App Upgrade](https://appupgrade.dev)
 
 ### Changelog
@@ -298,6 +302,6 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 ## Need help?
 
 If you're looking for help, try our [Documentation](https://appupgrade.dev/docs/) or our [FAQ](https://appupgrade.dev/docs/app-upgrade-faq).
-If you need support please write to us at appupgrade.dev@gmail.com
+If you need support please write to us at support@appupgrade.dev
 
 ### Happy Coding!!!

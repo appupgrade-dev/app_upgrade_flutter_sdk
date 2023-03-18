@@ -61,6 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
         appLanguage: 'es',
         // preferredAndroidMarket: PreferredAndroidMarket.huawei, // or PrefferedAndroidMarket.huawei or PrefferedAndroidMarket.other If not provided default android marketplace is Google playstore. Optional
         // otherAndroidMarketUrl: 'https://otherandroidmarketplaceurl.com/app/id', // Required only if PreferredAndroidMarket is other.
+        // preferredIosStore: PreferredIosStore.other,
+        // otherIosStoreUrl: "https://otheriosstoreurl.com/app/id"
     );
 
     // This is Optional.
