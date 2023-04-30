@@ -221,7 +221,7 @@ class MyApp extends StatelessWidget {
 For IOS, if you want to redirect user to some other store you can use the following parameters:
 
 - preferredIosStore: PreferredIosStore.other
-- otherIosStoreUrl: "https://otheriosstoreurl.com/app/id"// Required if preferredAndroidMarket is Other.
+- otherIosStoreUrl: "https://otheriosstoreurl.com/app/id"// Required if preferredIosStore is Other.
 
 ### Note:
 1. For opening the app store/playstore the app should be live.
