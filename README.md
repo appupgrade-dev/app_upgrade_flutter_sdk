@@ -10,26 +10,33 @@ App Upgrade is a service let your users know when to upgrade your apps or force 
 Many times we need to force upgrade mobile apps on users' mobile. Having faced this issue multiple times decided to find a better way to tackle this problem. After doing some research on how people are doing this there are so many custom solutions or checking with the play store or AppStore API if there is a new version available. Although this works if we just want to nudge users that there is a new version available. It doesn't solve the problem where we want to make a decision.. whether it's a soft graceful update or we want to force update. So here is this product that will make developers' life easy. We can set custom messages.. see the versions in beautify dashboard, and many exciting features in the roadmap ahead.
 
 App Upgrade is a cross platform solution to getting users to easily update your app.
+
 ##### Stores Supported:
-Apple App Store | Google Play Store | Amazon App Store | Huawei AppGallery | Other Android Markets
---- | --- | --- | --- | ---
-**✓** | **✓** | **✓** | **✓** |  **✓** If your app market place isn't one of these you can pass your own store URL.
+
+| Apple App Store | Google Play Store | Amazon App Store | Huawei AppGallery | Other Android Markets                                                              |
+| --------------- | ----------------- | ---------------- | ----------------- | ---------------------------------------------------------------------------------- |
+| **✓**           | **✓**             | **✓**            | **✓**             | **✓** If your app market place isn't one of these you can pass your own store URL. |
 
 ## Installation
+
 With flutter
+
 ```
 flutter pub add app_upgrade_flutter_sdk
 ```
 
 Import the package
+
 ```
 import 'package:app_upgrade_flutter_sdk/app_upgrade_flutter_sdk.dart';
 ```
 
 ## How to use it.
+
 1. Register on App Upgrade and follow the instructions to create project and get the x-api-key.
 
 2. Wrap the body widget with the `AppUpgradeAlert` widget, provide x-api-key, appInfo of your app and rest will be handled.
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:app_upgrade_flutter_sdk/app_upgrade_flutter_sdk.dart';
@@ -43,15 +50,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+
     AppInfo appInfo = AppInfo(
+      appId: 'com.android.com' or '1549468967', // Your app id in play store or app store
       appName: 'Wallpaper app', // Your app name
       appVersion: '1.0.0', // Your app version
       platform: 'android', // App Platform, android or ios
       environment: 'production', // Environment in which app is running, production, staging or development etc.
       appLanguage: 'en' // App language ex: en, es etc. Optional.
     );
-    
+
     return MaterialApp(
       title: 'App Upgrade Flutter Example',
       home: Scaffold(
@@ -81,6 +89,7 @@ Optionally you can also provide dialog cofiguration such as dialogStyle (materia
 ```
 
 Example with Dialog Config:
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:app_upgrade_flutter_sdk/app_upgrade_flutter_sdk.dart';
@@ -94,15 +103,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+
     AppInfo appInfo = AppInfo(
+      appId: 'com.android.com' or '1549468967', // Your app id in play store or app store
       appName: 'Wallpaper app',
       appVersion: '1.0.0',
       platform: 'android',
       environment: 'production',
       appLanguage: 'en' // App language ex: en, es etc. Optional.
     );
-    
+
     DialogConfig dialogConfig = DialogConfig(
       dialogStyle: DialogStyle.material,
       title: 'App update required!',
@@ -110,7 +120,7 @@ class MyApp extends StatelessWidget {
       laterButtonTitle: 'Later'
       onLaterCallback: () { print("Later callback") }
     );
-    
+
     return MaterialApp(
       title: 'App Upgrade Flutter Example',
       home: Scaffold(
@@ -130,7 +140,9 @@ class MyApp extends StatelessWidget {
 ```
 
 ### Example with store other than app store or play store.
+
 If you want users to redirect to store other than app store or playstore. You can add these additional parameters **preferredAndroidMarket** see the example below.
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:app_upgrade_flutter_sdk/app_upgrade_flutter_sdk.dart';
@@ -144,8 +156,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+
     AppInfo appInfo = AppInfo(
+      appId: 'com.android.com' or '1549468967', // Your app id in play store or app store
       appName: 'Wallpaper app', // Your app name
       appVersion: '1.0.0', // Your app version
       platform: 'android', // App Platform, android or ios
@@ -153,7 +166,7 @@ class MyApp extends StatelessWidget {
       appLanguage: 'en' // App language ex: en, es etc. Optional.
       preferredAndroidMarket: PreferredAndroidMarket.amazon // or PreferredAndroidMarket.huawei or PreferredAndroidMarket.other If not provided default is Google playstore. Optional
     );
-    
+
     return MaterialApp(
       title: 'App Upgrade Flutter Example',
       home: Scaffold(
@@ -174,10 +187,12 @@ class MyApp extends StatelessWidget {
 - preferredAndroidMarket: PreferredAndroidMarket.amazon // or PreferredAndroidMarket.huawei or PreferredAndroidMarket.other If not provided default is Google playstore. If SDK fails to open preferred market place in case marketplace is not available then default Google playstore will be open.
 
 If you want to redirect user to some other android market place you can use the following example:
+
 ```
 preferredAndroidMarket: PreferredAndroidMarket.other
 otherAndroidMarketUrl: 'https://someotherandroidmarket.com/app/id'// Required if preferredAndroidMarket is Other.
 ```
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:app_upgrade_flutter_sdk/app_upgrade_flutter_sdk.dart';
@@ -191,8 +206,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+
     AppInfo appInfo = AppInfo(
+      appId: 'com.android.com' or '1549468967', // Your app id in play store or app store
       appName: 'Wallpaper app', // Your app name
       appVersion: '1.0.0', // Your app version
       platform: 'android', // App Platform, android or ios
@@ -201,7 +217,7 @@ class MyApp extends StatelessWidget {
       preferredAndroidMarket: PreferredAndroidMarket.other // or PreferredAndroidMarket.Huawei or PreferredAndroidMarket.Other If not provided default is Google playstore. Optional
       otherAndroidMarketUrl: 'https://someotherandroidmarket.com/app/id'// Required if preferredAndroidMarket is other.
     );
-    
+
     return MaterialApp(
       title: 'App Upgrade Flutter Example',
       home: Scaffold(
@@ -218,12 +234,14 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
 For IOS, if you want to redirect user to some other store you can use the following parameters:
 
 - preferredIosStore: PreferredIosStore.other
 - otherIosStoreUrl: "https://otheriosstoreurl.com/app/id"// Required if preferredIosStore is Other.
 
 ### Note:
+
 1. For opening the app store/playstore the app should be live.
 2. It might not be able to open the app store/playstore in simulator. You can try it in physical device.
 3. You can find a sample app from here [app_upgrade_flutter_demo_app](https://github.com/appupgrade-dev/app_upgrade_flutter_demo_app)
@@ -238,12 +256,15 @@ For IOS, if you want to redirect user to some other store you can use the follow
 ![image](https://raw.githubusercontent.com/appupgrade-dev/app-upgrade-assets/main/images/forceupgrade_flutter_cupertino.png)
 
 ## Force upgrade screenshot Example
+
 Only update button is enable. User cannot skip it.
 
 ![image](https://raw.githubusercontent.com/appupgrade-dev/app-upgrade-assets/main/images/forceupgrade_flutter_.png)
 
 ### Debugging
+
 You can provide debug true to enable debug logs
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:upgrader/upgrader.dart';
@@ -257,15 +278,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+
     AppInfo appInfo = AppInfo(
+      appId: 'com.android.com' or '1549468967', // Your app id in play store or app store
       appName: 'Wallpaper app', // Your app name
       appVersion: '1.0.0', // Your app version
       platform: 'android', // App Platform, android or ios
       environment: 'production', // Environment in which app is running, production, staging or development etc.
       appLanguage: 'en' // App language ex: en, es etc. Optional.
     );
-    
+
     return MaterialApp(
       title: 'App Upgrade Flutter Example',
       home: Scaffold(
@@ -285,6 +307,7 @@ class MyApp extends StatelessWidget {
 ```
 
 ## App Upgrade
+
 For more information visit [App Upgrade](https://appupgrade.dev)
 
 ### Changelog

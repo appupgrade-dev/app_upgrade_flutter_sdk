@@ -1,4 +1,5 @@
 class AppInfo {
+  final String appId;
   final String appName;
   final String appVersion;
   final String platform;
@@ -10,6 +11,7 @@ class AppInfo {
   String? otherIosStoreUrl;
 
   AppInfo({
+    required this.appId,
     required this.appName,
     required this.appVersion,
     required this.platform,

@@ -2,6 +2,9 @@
 
 All notable changes will be documented in this file.
 
+## [2.0.0] - 2023-06-30
+* Add support for user provided appId.
+
 ## [1.0.9] - 2023-03-18
 * Add support for other iOS stores.
 

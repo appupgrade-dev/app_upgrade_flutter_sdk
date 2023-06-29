@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     AppInfo appInfo = AppInfo(
+        appId: 'com.example.app',
         appName: 'Wallpaper app',
         appVersion: '1.0.0',
         platform: 'android',

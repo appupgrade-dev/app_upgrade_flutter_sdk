@@ -204,8 +204,7 @@ class AppUpgrade {
       }
 
       String url = '';
-      PackageInfo packageInfo = await PackageInfo.fromPlatform();
-      String appId = packageInfo.packageName;
+      String appId = appInfo.appId;
 
       if (Platform.isAndroid) {
         if (appInfo.preferredAndroidMarket == PreferredAndroidMarket.google) {
