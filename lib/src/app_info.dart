@@ -9,6 +9,7 @@ class AppInfo {
   String? otherAndroidMarketUrl;
   String? preferredIosStore;
   String? otherIosStoreUrl;
+  Map<String, dynamic>? customAttributes;
 
   AppInfo({
     required this.appId,
@@ -21,5 +22,6 @@ class AppInfo {
     this.otherAndroidMarketUrl,
     this.preferredIosStore,
     this.otherIosStoreUrl,
+    this.customAttributes,
   });
 }

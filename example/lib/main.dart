@@ -64,6 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // otherAndroidMarketUrl: 'https://otherandroidmarketplaceurl.com/app/id', // Required only if PreferredAndroidMarket is other.
         // preferredIosStore: PreferredIosStore.other,
         // otherIosStoreUrl: "https://otheriosstoreurl.com/app/id"
+        // customAttributes: {
+        //   'os': 12,
+        //   'country': 'IS',
+        //   'build': 100
+        // }
     );
 
     // This is Optional.

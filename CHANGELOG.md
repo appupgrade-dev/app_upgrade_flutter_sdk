@@ -2,6 +2,9 @@
 
 All notable changes will be documented in this file.
 
+## [2.0.1] - 2023-08-20
+* Add support custom attributes.
+
 ## [2.0.0] - 2023-06-30
 * Add support for user provided appId.
 

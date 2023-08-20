@@ -20,6 +20,13 @@ class AppUpgradeApi {
         'environment': params.environment,
         'app_language': params.appLanguage
       };
+
+      if (params.customAttributes != null) {
+        final customAttributes = params.customAttributes!;
+        customAttributes.forEach((key, value) {
+          queryParameters[key] = value.toString(); // Convert value to string or adjust accordingly
+        });
+      }
       
       final response = await client!.get(
         Uri.https(appUpgradeBaseURL, '/api/v1/versions/check', queryParameters),
