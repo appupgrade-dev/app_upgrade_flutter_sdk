@@ -8,7 +8,6 @@ import 'app_upgrade_api.dart';
 import 'dialog_config.dart';
 import 'dart:io' show Platform;
 import 'preferred_android_market.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 typedef BoolCallback = bool Function();
 
