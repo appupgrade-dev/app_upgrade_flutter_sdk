@@ -1,6 +1,6 @@
 name: app_upgrade_flutter_sdk
 description: The official Flutter SDK for App Upgrade. The SDK integrates with the App Upgrade version check API.
-version: 2.0.2
+version: 3.0.0
 homepage: https://github.com/appupgrade-dev/app_upgrade_flutter_sdk
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.0
+  http: ^1.1.0
   url_launcher: ^6.1.10 
 dev_dependencies:
   flutter_test:
