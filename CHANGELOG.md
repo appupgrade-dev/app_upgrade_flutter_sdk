@@ -2,6 +2,9 @@
 
 All notable changes will be documented in this file.
 
+## [3.0.0] - 2023-11-14
+* Upgrade http dependency to 1.1.0
+
 ## [2.0.1] - 2023-08-20
 * Add support custom attributes.
 
